@@ -6,6 +6,11 @@
   --border-color: #e6eaf0;
   --sidebar-bg: #f8fafc;
   --code-bg: #f6f8fa;
+  --sidebar-width: 280px;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 body {
@@ -17,21 +22,21 @@ body {
 
 /* 左侧栏 */
 .sidebar {
-  width: 300px;
+  width: var(--sidebar-width);
   background: var(--sidebar-bg);
   border-right: 1px solid var(--border-color);
-  padding-top: 24px;
+  padding-top: 18px;
 }
 
 .sidebar > h1 {
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 700;
   color: #1f2937;
-  margin: 0 0 28px;
+  margin: 0 0 22px;
 }
 
 .sidebar-nav {
-  padding: 0 18px 30px;
+  padding: 0 14px 40px;
 }
 
 .sidebar-nav ul {
@@ -40,24 +45,26 @@ body {
 }
 
 .sidebar-nav li {
-  margin: 4px 0;
+  margin: 1px 0;
   list-style: none;
 }
 
 .sidebar-nav > ul > li > p,
 .sidebar-nav > ul > li > a {
   font-size: 15px;
-  font-weight: 700;
+  font-weight: 800;
   color: #1f2937;
-  margin: 14px 0 8px;
+  margin: 12px 0 8px;
+  cursor: pointer;
 }
 
 .sidebar-nav a {
   display: block;
-  padding: 7px 10px;
+  padding: 6px 10px;
   border-radius: 8px;
   color: #344054;
   font-size: 14px;
+  line-height: 1.55;
   text-decoration: none;
   transition: all 0.2s ease;
 }
@@ -67,20 +74,70 @@ body {
   color: #128047;
 }
 
-.sidebar-nav li.active > a {
-  background: #dff5e9;
+.sidebar-nav li.active > a,
+.sidebar-nav li.open > a {
+  background: linear-gradient(90deg, #dff5e9, #f5fbf8);
   color: #128047;
   font-weight: 700;
+  border-left: 3px solid #18a058;
+}
+
+/* 侧边栏折叠目录样式 */
+.sidebar-nav .folder {
+  font-weight: 800;
+  color: #1f2937;
+}
+
+.sidebar-nav .folder::before {
+  color: #18a058;
+}
+
+/* 搜索框 */
+.search {
+  margin: 14px 12px 18px;
+  padding: 0;
+  border-bottom: none;
+}
+
+.search input {
+  width: 100%;
+  height: 36px;
+  box-sizing: border-box;
+  border-radius: 10px;
+  border: 1px solid #dbe2ea;
+  background: #ffffff;
+  padding: 0 12px;
+  font-size: 14px;
+  color: #1f2937;
+  outline: none;
+  box-shadow: 0 2px 8px rgba(31, 41, 55, 0.05);
+}
+
+.search input:focus {
+  border-color: #18a058;
+  box-shadow: 0 0 0 3px rgba(24, 160, 88, 0.12);
+}
+
+.search .matching-post {
+  border-bottom: 1px solid #eef2f6;
+}
+
+.search .matching-post a {
+  color: #1f2937;
+  font-weight: 600;
 }
 
 /* 主内容区 */
 .content {
-  left: 300px;
+  left: var(--sidebar-width);
+  right: 0;
   padding-top: 0;
 }
 
 .markdown-section {
-  max-width: 980px;
+  max-width: 1280px;
+  width: calc(100% - 96px);
+  margin: 0 auto;
   padding: 48px 56px 80px;
   line-height: 1.8;
   color: #243447;
@@ -93,6 +150,11 @@ body {
   margin: 0 0 24px;
   padding-bottom: 14px;
   border-bottom: 1px solid var(--border-color);
+}
+
+.markdown-section h1:first-child {
+  font-size: 36px;
+  letter-spacing: 0.5px;
 }
 
 .markdown-section h2 {
@@ -129,9 +191,11 @@ body {
 /* 表格 */
 .markdown-section table {
   display: table;
-  width: 100%;
+  width: auto;
+  min-width: 420px;
+  max-width: 100%;
   border-collapse: collapse;
-  margin: 24px 0;
+  margin: 24px auto;
   overflow: hidden;
   border-radius: 10px;
   box-shadow: 0 2px 10px rgba(31, 41, 55, 0.06);
@@ -146,7 +210,7 @@ body {
 .markdown-section th,
 .markdown-section td {
   border: 1px solid #e5e7eb;
-  padding: 10px 14px;
+  padding: 9px 14px;
   font-size: 15px;
 }
 
@@ -160,6 +224,9 @@ body {
   border-radius: 12px;
   border: 1px solid #e5e7eb;
   padding: 16px;
+  margin-left: auto;
+  margin-right: auto;
+  overflow: auto;
 }
 
 .markdown-section code {
@@ -178,207 +245,22 @@ body {
 
 /* 引用块 */
 .markdown-section blockquote {
-  border-left: 4px solid #18a058;
-  background: #f6fbf8;
+  margin-top: 28px;
+  border-left: 5px solid #18a058;
+  background: linear-gradient(90deg, #f0fbf5, #ffffff);
   color: #475467;
   padding: 10px 16px;
   border-radius: 0 8px 8px 0;
+  box-shadow: 0 4px 14px rgba(31, 41, 55, 0.04);
 }
 
 /* 图片 */
 .markdown-section img {
+  display: block;
   max-width: 100%;
+  margin: 22px auto;
   border-radius: 10px;
   box-shadow: 0 3px 14px rgba(31, 41, 55, 0.12);
-  margin: 14px 0;
-}
-
-/* 搜索框，如果你后面加搜索插件会用到 */
-.search input {
-  border-radius: 8px;
-  border: 1px solid #d0d5dd;
-  padding: 8px 12px;
-}
-
-/* 移动端适配 */
-@media screen and (max-width: 768px) {
-  .sidebar {
-    width: 260px;
-  }
-
-  .content {
-    left: 0;
-  }
-
-  .markdown-section {
-    padding: 32px 22px 60px;
-  }
-
-  .markdown-section h1 {
-    font-size: 28px;
-  }
-
-  .markdown-section h2 {
-    font-size: 23px;
-  }
-}
-
-
-/* 让右上角 GitHub 角标不那么抢眼 */
-.github-corner svg {
-  width: 56px;
-  height: 56px;
-  opacity: 0.75;
-}
-
-.github-corner:hover svg {
-  opacity: 1;
-}
-
-/* 如果你觉得右上角图标太碍眼，可以直接隐藏 */
-/*
-.github-corner {
-  display: none;
-}
-*/
-
-/* 左侧搜索框美化 */
-.search {
-  margin: 14px 12px 18px;
-  padding: 0;
-  border-bottom: none;
-}
-
-.search input {
-  width: 100%;
-  height: 36px;
-  box-sizing: border-box;
-  border-radius: 10px;
-  border: 1px solid #dbe2ea;
-  background: #ffffff;
-  padding: 0 12px;
-  font-size: 14px;
-  color: #1f2937;
-  outline: none;
-  box-shadow: 0 2px 8px rgba(31, 41, 55, 0.05);
-}
-
-.search input:focus {
-  border-color: #18a058;
-  box-shadow: 0 0 0 3px rgba(24, 160, 88, 0.12);
-}
-
-/* 搜索结果 */
-.search .matching-post {
-  border-bottom: 1px solid #eef2f6;
-}
-
-.search .matching-post a {
-  color: #1f2937;
-  font-weight: 600;
-}
-
-/* 左侧栏整体稍微紧凑一点 */
-.sidebar {
-  width: 280px;
-}
-
-.content {
-  left: 280px;
-}
-
-.sidebar > h1 {
-  font-size: 22px;
-  margin-bottom: 22px;
-}
-
-.sidebar-nav {
-  padding: 0 14px 40px;
-}
-
-.sidebar-nav li {
-  margin: 1px 0;
-}
-
-.sidebar-nav a {
-  padding: 6px 10px;
-  border-radius: 8px;
-  font-size: 14px;
-  line-height: 1.55;
-}
-
-.sidebar-nav > ul > li > p,
-.sidebar-nav > ul > li > a {
-  font-size: 15px;
-  margin: 12px 0 8px;
-}
-
-/* 当前选中的菜单更明显 */
-.sidebar-nav li.active > a {
-  background: linear-gradient(90deg, #dff5e9, #f5fbf8);
-  color: #128047;
-  font-weight: 700;
-  border-left: 3px solid #18a058;
-}
-
-/* 正文区域稍微往左一点，不要显得太空 */
-.markdown-section {
-  max-width: 920px;
-  margin-left: 80px;
-  margin-right: auto;
-}
-
-/* 首页标题更像文档站首页 */
-.markdown-section h1:first-child {
-  font-size: 36px;
-  letter-spacing: 0.5px;
-}
-
-/* 首页提示块更柔和 */
-.markdown-section blockquote {
-  margin-top: 28px;
-  border-left: 5px solid #18a058;
-  background: linear-gradient(90deg, #f0fbf5, #ffffff);
-  box-shadow: 0 4px 14px rgba(31, 41, 55, 0.04);
-}
-
-/* 表格更紧凑一点 */
-.markdown-section table {
-  width: auto;
-  min-width: 420px;
-}
-
-.markdown-section th,
-.markdown-section td {
-  padding: 9px 14px;
-}
-
-/* 底部移动端菜单按钮，在电脑端隐藏 */
-@media screen and (min-width: 769px) {
-  .sidebar-toggle {
-    display: none;
-  }
-}
-
-/* 移动端恢复默认布局 */
-@media screen and (max-width: 768px) {
-  .sidebar {
-    width: 260px;
-  }
-
-  .content {
-    left: 0;
-  }
-
-  .markdown-section {
-    margin-left: auto;
-    margin-right: auto;
-    padding: 30px 22px 60px;
-  }
-
-  .sidebar-toggle {
-    display: block;
-  }
 }
 
 /* 首页卡片 */
@@ -419,32 +301,58 @@ body {
   line-height: 1.7;
 }
 
-@media screen and (max-width: 768px) {
-  .home-grid {
-    grid-template-columns: 1fr;
+/* 右上角 GitHub 角标 */
+.github-corner svg {
+  width: 56px;
+  height: 56px;
+  opacity: 0.75;
+}
+
+.github-corner:hover svg {
+  opacity: 1;
+}
+
+/* 电脑端隐藏底部菜单按钮 */
+@media screen and (min-width: 769px) {
+  .sidebar-toggle {
+    display: none;
   }
 }
 
-/* 侧边栏折叠目录样式 */
-.sidebar-nav .folder {
-  font-weight: 800;
-  color: #1f2937;
-}
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 260px;
+  }
 
-.sidebar-nav .folder::before {
-  color: #18a058;
-}
+  .content {
+    left: 0;
+  }
 
-.sidebar-nav li.open > a,
-.sidebar-nav li.active > a {
-  background: #e8f7ef;
-  color: #128047;
-  font-weight: 700;
-}
+  .markdown-section {
+    max-width: 100%;
+    width: 100%;
+    margin: 0 auto;
+    padding: 30px 22px 60px;
+  }
 
-/* 一级目录更突出 */
-.sidebar-nav > ul > li > a {
-  font-size: 15px;
-  font-weight: 800;
-  margin-top: 10px;
+  .markdown-section h1 {
+    font-size: 28px;
+  }
+
+  .markdown-section h2 {
+    font-size: 23px;
+  }
+
+  .markdown-section table {
+    min-width: 100%;
+  }
+
+  .home-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar-toggle {
+    display: block;
+  }
 }
