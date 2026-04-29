@@ -4,24 +4,59 @@
   <meta charset="UTF-8">
   <title>安卓学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 主题样式 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/themes/vue.css">
+  <!-- 代码高亮 -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-kotlin.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
 </head>
 <body>
   <div id="app"></div>
   <script>
     window.$docsify = {
-      name: '安卓学习笔记',
+      // 仓库子目录配置（必须和你的仓库名一致）
       basePath: '/my-docs/',
+      // 网站名称（首页默认显示）
+      name: '安卓学习笔记',
+      // 开启侧边栏
       loadSidebar: true,
+      // 侧边栏标题层级
       subMaxLevel: 3,
+      // 切换页面自动回到顶部
       auto2top: true,
+      // 首页文件
       homepage: 'README.md',
-      // ✅【核心修复】强制所有页面都加载根目录的_sidebar.md
+      // ✅ 强制所有页面（包括子文件夹）都加载根目录的侧边栏
       alias: {
         '/.*/_sidebar.md': '/_sidebar.md'
       }
     }
   </script>
+  <!-- Docsify核心 -->
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+  <!-- 代码高亮 -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"></script>
+
+  <!-- ✅ 动态切换左上角标题（满足你二级页改名字的需求） -->
+  <script>
+    // 监听路由变化，自动修改左上角标题
+    window.$docsify.plugins = [
+      function(hook, vm) {
+        hook.doneEach(function() {
+          const path = window.location.hash;
+          const titleDom = document.querySelector('.app-name');
+          // 匹配路径，切换标题
+          if (path.includes('1_安卓基础教程')) {
+            titleDom.innerText = '1_安卓基础教程';
+          } else if (path.includes('2_暴龙笔记开发')) {
+            titleDom.innerText = '2_暴龙笔记开发';
+          } else {
+            titleDom.innerText = '安卓学习笔记';
+          }
+        });
+      }
+    ];
+  </script>
 </body>
 </html>
