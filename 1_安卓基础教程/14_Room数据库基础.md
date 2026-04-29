@@ -54,7 +54,8 @@ Entity就是实例，这里创建的Word实体对象。
 
 类名上面要写上@Entity的注解，然后id是自增长主键，也要写上注解。每个字段名字可以写上字段的名字方便我们记忆，这个是可写可不写。
 
-```Word.java
+Word.class
+```java
 package com.example.helloworld.Entity;
 
 import androidx.room.ColumnInfo;
@@ -106,9 +107,10 @@ public class Word {
 
 ### 4.DAO 
 
-DAO也就是Database access object，数据库访问对象，一般是一个接口或者抽象类，里面定义增删改查的各种操作。但是不用实现，因为写上注解后，Room工具会自动给我们实现WordDAO_Impl.java
+DAO也就是Database access object，数据库访问对象，一般是一个接口或者抽象类，里面定义增删改查的各种操作。但是不用实现，因为写上注解后，Room工具会自动给我们实现WordDAO_Impl.class
 
-```WordDAO.java
+WordDAO.class
+```java
 package com.example.helloworld.DAO;
 
 import androidx.room.Dao;
@@ -144,7 +146,8 @@ public interface WordDAO {
 
 database是一个抽象类，要继承自RoomDataBase。Database主要做的任务就是返回Dao对象，如果有多个Entity，就要返回多个DAO，后面我们在控制器里就要通过database来得到对应实体的DAO。database要写上注解，版本号就是如果数据库更改了，新增字段或者删除某一字段，就要依靠版本号来进行marigation迁移。
 
-```WordDatabase.java
+WordDatabase.class
+```java
 package com.example.helloworld.Database;
 
 import androidx.room.Database;
@@ -164,7 +167,8 @@ public abstract class WordDatabase extends RoomDatabase {
 
 ![image-20260404164102454](..\imgs\image-20260404164102454.png)
 
-```java MainActivity
+MainActivity.class
+```java
 package com.example.helloworld;
 
 import android.os.Bundle;
@@ -266,7 +270,8 @@ public class MainActivity extends AppCompatActivity {
 
 布局文件
 
-```layout_main.xml
+layout_main.xml
+```xml
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
