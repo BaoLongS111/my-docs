@@ -4,9 +4,7 @@
   <meta charset="UTF-8">
   <title>安卓学习笔记</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- 官方主题 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/themes/vue.css">
-  <!-- 代码高亮 -->
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-kotlin.min.js"></script>
@@ -17,12 +15,14 @@
     window.$docsify = {
       name: '安卓学习笔记',
       repo: '',
-      loadSidebar: true,    // 自动加载左侧导航
-      subMaxLevel: 3,       // 支持三级标题
-      auto2top: true,       // 切换页面自动回到顶部
+      loadSidebar: true,
+      subMaxLevel: 3,
+      auto2top: true,
       coverpage: false,
+      loadNavbar: false,
       alias: {
-        '/.*/_sidebar.md': '/_sidebar.md'
+        '/.*/_sidebar.md': '/_sidebar.md',
+        '/': '/README.md'  // 强制指定首页为 README.md
       }
     }
   </script>
