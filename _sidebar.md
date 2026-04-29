@@ -24,7 +24,7 @@
   - [20_Paging逐步按需加载数据](/1_安卓基础教程/20_Paging逐步按需加载数据.md)
   - [21_序列化Serial](/1_安卓基础教程/21_序列化Serial.md)
   - [22_序列化Parcelable_进程间传递对象](/1_安卓基础教程/22_序列化Parcelable_进程间传递对象.md)
-  - [23_序列化json序列化以及Gson工具](/1_安卓基础教程/23_序列化Json序列化以及Gson工具.md)
+  - [23_序列化Json序列化以及Gson工具](/1_安卓基础教程/23_序列化Json序列化以及Gson工具.md)
   - [24_番外从Java到Kotlin](/1_安卓基础教程/24_番外从Java到Kotlin.md)
   - [25_画廊kotlin小知识](/1_安卓基础教程/25_画廊kotlin小知识.md)
   - [26_滑动分页视图ViewPager2](/1_安卓基础教程/26_滑动分页视图ViewPager2.md)
