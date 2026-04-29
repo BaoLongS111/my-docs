@@ -1,21 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh-CN">
 <head>
-  <meta charset="utf-8">
-  <title>我的文档</title>
+  <meta charset="UTF-8">
+  <title>安卓学习笔记</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- 官方主题 -->
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/docsify@4/themes/vue.css">
+  <!-- 代码高亮 -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-bash.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-java.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/components/prism-kotlin.min.js"></script>
 </head>
 <body>
   <div id="app"></div>
   <script>
     window.$docsify = {
-      name: '我的文档',
+      name: '安卓学习笔记',
       repo: '',
-      loadSidebar: true,    // 自动加载左侧菜单
+      loadSidebar: true,    // 自动加载左侧导航
       subMaxLevel: 3,       // 支持三级标题
-      auto2top: true
+      auto2top: true,       // 切换页面自动回到顶部
+      coverpage: false,
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md'
+      }
     }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1/prism.min.js"></script>
 </body>
 </html>
