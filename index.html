@@ -30,34 +30,7 @@
       placeholder: '搜索笔记',
       noData: '没有找到相关内容',
       depth: 3
-    },
-    plugins: [
-      function (hook) {
-        hook.doneEach(function () {
-          setTimeout(function () {
-            var nav = document.querySelector('.sidebar-nav');
-            if (!nav) return;
-
-            var topItems = nav.querySelectorAll(':scope > ul > li');
-
-            topItems.forEach(function (item) {
-              var childList = item.querySelector(':scope > ul');
-              if (!childList) return;
-
-              var hasActive = item.querySelector('li.active, a.active');
-
-              if (hasActive) {
-                item.classList.add('open');
-                childList.style.display = '';
-              } else {
-                item.classList.remove('open');
-                childList.style.display = 'none';
-              }
-            });
-          }, 100);
-        });
-      }
-    ]
+    }
   }
 </script>
   <!-- Docsify核心 -->
