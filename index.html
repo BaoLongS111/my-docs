@@ -53,8 +53,43 @@
         previousText: '上一篇',
         nextText: '下一篇',
         crossChapter: true
-      }
-    }
+      },
+
+      plugins: [
+        function (hook, vm) {
+          hook.doneEach(function () {
+            var path = vm.route.file || 'README.md';
+    
+            if (path === '/README.md') {
+              path = 'README.md';
+            }
+    
+            if (path.startsWith('/')) {
+              path = path.substring(1);
+            }
+    
+            var editUrl = 'https://github.com/BaoLongS111/my-docs/edit/main/' + path;
+    
+            var editButton = document.createElement('a');
+            editButton.href = editUrl;
+            editButton.target = '_blank';
+            editButton.className = 'edit-page-button';
+            editButton.innerText = '编辑本页';
+    
+            var oldButton = document.querySelector('.edit-page-button');
+            if (oldButton) {
+              oldButton.remove();
+            }
+    
+            var markdown = document.querySelector('.markdown-section');
+            if (markdown) {
+              markdown.insertBefore(editButton, markdown.firstChild);
+            }
+          });
+        }
+      ]
+      
+  }
   </script>
 
   <!-- Docsify 核心 -->
