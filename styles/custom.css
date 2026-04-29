@@ -1,0 +1,224 @@
+/* 全局基础样式 */
+:root {
+  --theme-color: #18a058;
+  --text-color-base: #2c3e50;
+  --text-color-secondary: #5f6f82;
+  --border-color: #e6eaf0;
+  --sidebar-bg: #f8fafc;
+  --code-bg: #f6f8fa;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Microsoft YaHei",
+    "PingFang SC", "Helvetica Neue", Arial, sans-serif;
+  color: var(--text-color-base);
+  background: #ffffff;
+}
+
+/* 左侧栏 */
+.sidebar {
+  width: 300px;
+  background: var(--sidebar-bg);
+  border-right: 1px solid var(--border-color);
+  padding-top: 24px;
+}
+
+.sidebar > h1 {
+  font-size: 24px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 0 0 28px;
+}
+
+.sidebar-nav {
+  padding: 0 18px 30px;
+}
+
+.sidebar-nav ul {
+  margin: 0;
+  padding-left: 0;
+}
+
+.sidebar-nav li {
+  margin: 4px 0;
+  list-style: none;
+}
+
+.sidebar-nav > ul > li > p,
+.sidebar-nav > ul > li > a {
+  font-size: 15px;
+  font-weight: 700;
+  color: #1f2937;
+  margin: 14px 0 8px;
+}
+
+.sidebar-nav a {
+  display: block;
+  padding: 7px 10px;
+  border-radius: 8px;
+  color: #344054;
+  font-size: 14px;
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.sidebar-nav a:hover {
+  background: #eaf7f0;
+  color: #128047;
+}
+
+.sidebar-nav li.active > a {
+  background: #dff5e9;
+  color: #128047;
+  font-weight: 700;
+}
+
+/* 主内容区 */
+.content {
+  left: 300px;
+  padding-top: 0;
+}
+
+.markdown-section {
+  max-width: 980px;
+  padding: 48px 56px 80px;
+  line-height: 1.8;
+  color: #243447;
+}
+
+.markdown-section h1 {
+  font-size: 34px;
+  font-weight: 800;
+  color: #1f2937;
+  margin: 0 0 24px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.markdown-section h2 {
+  font-size: 26px;
+  font-weight: 750;
+  color: #1f2937;
+  margin-top: 42px;
+  margin-bottom: 18px;
+}
+
+.markdown-section h3 {
+  font-size: 21px;
+  font-weight: 700;
+  margin-top: 30px;
+}
+
+.markdown-section p {
+  font-size: 16px;
+  margin: 12px 0;
+}
+
+/* 链接 */
+.markdown-section a {
+  color: #18a058;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.markdown-section a:hover {
+  color: #0f7a43;
+  text-decoration: underline;
+}
+
+/* 表格 */
+.markdown-section table {
+  display: table;
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  overflow: hidden;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(31, 41, 55, 0.06);
+}
+
+.markdown-section th {
+  background: #f1f5f9;
+  color: #1f2937;
+  font-weight: 700;
+}
+
+.markdown-section th,
+.markdown-section td {
+  border: 1px solid #e5e7eb;
+  padding: 10px 14px;
+  font-size: 15px;
+}
+
+.markdown-section tr:nth-child(even) {
+  background: #fafafa;
+}
+
+/* 代码块 */
+.markdown-section pre {
+  background: var(--code-bg);
+  border-radius: 12px;
+  border: 1px solid #e5e7eb;
+  padding: 16px;
+}
+
+.markdown-section code {
+  font-family: "JetBrains Mono", "Consolas", "Courier New", monospace;
+  background: #f1f5f9;
+  color: #d6336c;
+  border-radius: 5px;
+  padding: 2px 6px;
+}
+
+.markdown-section pre code {
+  background: transparent;
+  color: inherit;
+  padding: 0;
+}
+
+/* 引用块 */
+.markdown-section blockquote {
+  border-left: 4px solid #18a058;
+  background: #f6fbf8;
+  color: #475467;
+  padding: 10px 16px;
+  border-radius: 0 8px 8px 0;
+}
+
+/* 图片 */
+.markdown-section img {
+  max-width: 100%;
+  border-radius: 10px;
+  box-shadow: 0 3px 14px rgba(31, 41, 55, 0.12);
+  margin: 14px 0;
+}
+
+/* 搜索框，如果你后面加搜索插件会用到 */
+.search input {
+  border-radius: 8px;
+  border: 1px solid #d0d5dd;
+  padding: 8px 12px;
+}
+
+/* 移动端适配 */
+@media screen and (max-width: 768px) {
+  .sidebar {
+    width: 260px;
+  }
+
+  .content {
+    left: 0;
+  }
+
+  .markdown-section {
+    padding: 32px 22px 60px;
+  }
+
+  .markdown-section h1 {
+    font-size: 28px;
+  }
+
+  .markdown-section h2 {
+    font-size: 23px;
+  }
+}
