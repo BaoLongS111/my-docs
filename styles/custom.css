@@ -356,3 +356,21 @@ body {
     display: block;
   }
 }
+
+.edit-page-button {
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 7px 14px;
+  border-radius: 8px;
+  background: #e8f7ef;
+  color: #128047 !important;
+  font-size: 14px;
+  font-weight: 700;
+  text-decoration: none !important;
+  border: 1px solid #ccebd8;
+}
+
+.edit-page-button:hover {
+  background: #dff5e9;
+  color: #0f7a43 !important;
+}
