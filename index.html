@@ -11,13 +11,15 @@
   <script>
     window.$docsify = {
       name: '安卓学习笔记',
-      // ✅【核心修复】必须加这一行！声明你的仓库子目录
-      basePath: '/my-docs/', 
+      basePath: '/my-docs/',
       loadSidebar: true,
       subMaxLevel: 3,
       auto2top: true,
-      // ✅ 强制首页
-      homepage: 'README.md'
+      homepage: 'README.md',
+      // ✅【核心修复】强制所有页面都加载根目录的_sidebar.md
+      alias: {
+        '/.*/_sidebar.md': '/_sidebar.md'
+      }
     }
   </script>
   <script src="https://cdn.jsdelivr.net/npm/docsify@4/lib/docsify.min.js"></script>
