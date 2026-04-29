@@ -4,7 +4,8 @@
 
 ![image-20260403190517550](..\imgs\image-20260403190517550.png)
 
-```java MyViewModel.class
+MyViewModel.class
+```java
 package com.example.helloworld;
 
 import androidx.lifecycle.MutableLiveData;
@@ -30,7 +31,8 @@ public class MyViewModel extends ViewModel {
 
 ```
 
-```java MasterFragment.class
+MasterFragment.class
+```java
 package com.example.helloworld;
 
 import android.os.Bundle;
@@ -104,7 +106,8 @@ public class MasterFragment extends Fragment {
 }
 ```
 
-```java DetailFragment
+DetailFragment.class
+```java
 package com.example.helloworld;
 
 import android.os.Bundle;
