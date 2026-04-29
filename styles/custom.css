@@ -448,3 +448,20 @@ body {
   font-weight: 800;
   margin-top: 10px;
 }
+
+/* 默认只展开当前章节，其余一级目录收起 */
+.sidebar-nav > ul > li > ul {
+  display: none;
+}
+
+.sidebar-nav > ul > li.open > ul,
+.sidebar-nav > ul > li:has(.active) > ul {
+  display: block;
+}
+
+/* 一级目录标题更像可折叠菜单 */
+.sidebar-nav > ul > li > a,
+.sidebar-nav > ul > li > p {
+  cursor: pointer;
+  font-weight: 800;
+}
